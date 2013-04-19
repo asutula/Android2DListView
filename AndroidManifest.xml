@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.asucom.asutula.tdlistview.MainActivityandroid:label="@string/app_name" >
+            android:name="com.asutula.tdlistview.MainActivity" 
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

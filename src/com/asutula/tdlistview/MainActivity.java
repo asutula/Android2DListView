@@ -1,7 +1,5 @@
 package com.asutula.tdlistview;
 
-import com.asutula.android2dlistview.R;
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,7 +15,7 @@ public class MainActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		_listView = (TDListView)findViewById(R.id.list);
+		//_listView = (TDListView)findViewById(R.id.list);
 		_listView.setTdTdapter(new TDListViewAdapter() {
 			
 			String[][] data = {
