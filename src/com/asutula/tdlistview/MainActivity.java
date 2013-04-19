@@ -1,13 +1,13 @@
 package com.asutula.tdlistview;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends Activity {
 	
 	private TDListView _listView;
 
@@ -15,7 +15,7 @@ public class MainActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		//_listView = (TDListView)findViewById(R.id.list);
+		_listView = (TDListView)findViewById(R.id.list);
 		_listView.setTdTdapter(new TDListViewAdapter() {
 			
 			String[][] data = {
