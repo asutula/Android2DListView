@@ -4,14 +4,11 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.devsmart.android.ui.HorizontalListView;
-
-public class TDListView extends View {
+public class TDListView extends ViewGroup {
 	
 	private ListView _listView;
 	private TDListViewAdapter _tdTdapter;
@@ -37,7 +34,7 @@ public class TDListView extends View {
 		// TODO: These are fine for now, but we need a good way to
 		// provide defaults and allow the user to override from XML
 		_listView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-		
+		this.addView(_listView);
 	}
 
 	public TDListViewAdapter getTdTdapter() {
@@ -47,7 +44,13 @@ public class TDListView extends View {
 	public void setTdTdapter(TDListViewAdapter tdTdapter) {
 		_tdTdapter = tdTdapter;
 		_listView.setAdapter(new MyAdapter());
-		_listView.requestLayout();
+		this.requestLayout();
+	}
+	
+	@Override
+	protected void onLayout(boolean changed, int l, int t, int r, int b) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	private class MyAdapter extends BaseAdapter implements ListAdapter {
@@ -82,6 +85,7 @@ public class TDListView extends View {
 			// TODO: Make it recycle
 			ListView horizontalListView = new ListView(getContext());
 			horizontalListView.setAdapter(new MyHorizontalListAdapter(position));
+			horizontalListView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 			return horizontalListView;
 		}
 
@@ -125,5 +129,4 @@ public class TDListView extends View {
 			
 		}
 	}
-
 }
