@@ -1,17 +1,22 @@
 package com.asutula.tdlistview;
 
+import android.*;
+import android.R;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.devsmart.android.ui.HorizontalListView;
 
-public class TDListView extends View {
+public class TDListView extends LinearLayout {
 	
 	private ListView _listView;
 	private TDListViewAdapter _tdTdapter;
@@ -21,22 +26,18 @@ public class TDListView extends View {
 		initListView(context, null, null);
 	}
 
-	public TDListView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		initListView(context, attrs, defStyle);
-	}
-	
-	public TDListView(Context context, AttributeSet attrs) {
+    public TDListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initListView(context, attrs, null);
 	}
 
 	private void initListView(Context context, AttributeSet attrs, Integer defStyle) {
-		_listView = new ListView(context, attrs);
-		
+        _listView = new ListView(context);
 		// TODO: These are fine for now, but we need a good way to
 		// provide defaults and allow the user to override from XML
-		_listView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        _listView.setBackgroundColor(getResources().getColor(R.color.holo_green_dark));
+        addView(_listView, lp);
 		
 	}
 
@@ -46,8 +47,8 @@ public class TDListView extends View {
 
 	public void setTdTdapter(TDListViewAdapter tdTdapter) {
 		_tdTdapter = tdTdapter;
-		_listView.setAdapter(new MyAdapter());
-		_listView.requestLayout();
+        MyAdapter adapter = new MyAdapter();
+		_listView.setAdapter(adapter);
 	}
 	
 	private class MyAdapter extends BaseAdapter implements ListAdapter {
@@ -80,8 +81,11 @@ public class TDListView extends View {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO: Make it recycle
-			ListView horizontalListView = new ListView(getContext());
-			horizontalListView.setAdapter(new MyHorizontalListAdapter(position));
+			HorizontalListView horizontalListView = new HorizontalListView(getContext(), null);
+            horizontalListView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 300));
+            MyHorizontalListAdapter a = new MyHorizontalListAdapter(position);
+			horizontalListView.setAdapter(a);
+            horizontalListView.setBackgroundColor(getResources().getColor(R.color.holo_blue_bright));
 			return horizontalListView;
 		}
 

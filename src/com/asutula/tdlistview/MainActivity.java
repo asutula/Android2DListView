@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -15,19 +16,27 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+
 		_listView = (TDListView)findViewById(R.id.list);
+        _listView.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
 		_listView.setTdTdapter(new TDListViewAdapter() {
 			
 			String[][] data = {
-					{"one", "two", "three"},
-					{"one", "two", "three"},
-					{"one", "two", "three"}
+                    {"one", "two", "three", "four", "five", "six", "seven", "eight"},
+                    {"one", "two", "three", "four", "five", "six", "seven", "eight"},
+                    {"one", "two", "three", "four", "five", "six", "seven", "eight"},
+                    {"one", "two", "three", "four", "five", "six", "seven", "eight"},
+                    {"one", "two", "three", "four", "five", "six", "seven", "eight"},
+                    {"one", "two", "three", "four", "five", "six", "seven", "eight"},
+                    {"one", "two", "three", "four", "five", "six", "seven", "eight"}
 			};
 			
 			@Override
 			public View viewForRowAndColumn(int row, int column) {
 				TextView view = new TextView(getBaseContext());
-				view.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+				view.setLayoutParams(new AbsListView.LayoutParams(200, 100));
+                view.setMinimumWidth(200);
 				view.setText(data[row][column]);
 				return view;
 			}

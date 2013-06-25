@@ -1,0 +1,6 @@
+[submodule "submodules/otto"]
+	path = submodules/otto
+	url = git@github.com:square/otto.git
+[submodule "submodules/horizontallistview"]
+	path = submodules/horizontallistview
+	url = git@github.com:dinocore1/DevsmartLib-Android.git
