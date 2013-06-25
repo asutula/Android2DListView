@@ -85,8 +85,7 @@ public class TDListView extends LinearLayout {
 
 			HorizontalListView horizontalListView = new HorizontalListView(getContext(), null);
             horizontalListView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 300));
-            MyHorizontalListAdapter a = new MyHorizontalListAdapter(position);
-			horizontalListView.setAdapter(a);
+			horizontalListView.setAdapter(new MyHorizontalListAdapter(position));
             horizontalListView.setBackgroundColor(getResources().getColor(R.color.holo_blue_bright));
 			return horizontalListView;
 		}
