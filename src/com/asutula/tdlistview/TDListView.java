@@ -8,11 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
+
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
 
 import com.devsmart.android.ui.HorizontalListView;
 
@@ -38,7 +40,6 @@ public class TDListView extends LinearLayout {
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         _listView.setBackgroundColor(getResources().getColor(R.color.holo_green_dark));
         addView(_listView, lp);
-		
 	}
 
 	public TDListViewAdapter getTdTdapter() {
@@ -47,8 +48,8 @@ public class TDListView extends LinearLayout {
 
 	public void setTdTdapter(TDListViewAdapter tdTdapter) {
 		_tdTdapter = tdTdapter;
-        MyAdapter adapter = new MyAdapter();
-		_listView.setAdapter(adapter);
+		_listView.setAdapter(new MyAdapter());
+		this.requestLayout();
 	}
 	
 	private class MyAdapter extends BaseAdapter implements ListAdapter {
@@ -81,6 +82,7 @@ public class TDListView extends LinearLayout {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO: Make it recycle
+
 			HorizontalListView horizontalListView = new HorizontalListView(getContext(), null);
             horizontalListView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 300));
             MyHorizontalListAdapter a = new MyHorizontalListAdapter(position);
@@ -129,5 +131,4 @@ public class TDListView extends LinearLayout {
 			
 		}
 	}
-
 }
