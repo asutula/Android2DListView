@@ -52,7 +52,12 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				return data[0].length;
 			}
-		});
+
+            @Override
+            public int heightForRow(int row) {
+                return 100;
+            }
+        });
 	}
 
 	@Override

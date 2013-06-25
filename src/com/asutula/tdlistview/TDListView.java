@@ -84,7 +84,7 @@ public class TDListView extends LinearLayout {
 			// TODO: Make it recycle
 
 			HorizontalListView horizontalListView = new HorizontalListView(getContext(), null);
-            horizontalListView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 300));
+            horizontalListView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, _tdTdapter.heightForRow(position)));
 			horizontalListView.setAdapter(new MyHorizontalListAdapter(position));
             horizontalListView.setBackgroundColor(getResources().getColor(R.color.holo_blue_bright));
 			return horizontalListView;
